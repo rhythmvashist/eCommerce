@@ -13,9 +13,8 @@ def index(request):
     params={
         'product':products,
         'no_of_slides':nSlides,
-        'range':range(nSlides)
+        'range':range(1,nSlides)
     }
-
     return  render(request,"shop/index.html",params)
 
 def about(request):
