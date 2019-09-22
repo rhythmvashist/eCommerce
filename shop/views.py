@@ -11,10 +11,16 @@ def index(request):
     print(products)
     n = len(products)
     nSlides = n // 4 + ceil((n / 4) - (n // 4))
+    # params = {
+    #     'product': products,
+    #     'no_of_slides': nSlides,
+    #     'range': range(1, nSlides)
+    # }
+
+    #list of list
+    allprods=[[products,range(1,nSlides),nSlides],[products,range(1,nSlides),nSlides]]
     params = {
-        'product': products,
-        'no_of_slides': nSlides,
-        'range': range(1, nSlides)
+        'allprods': allprods
     }
     return render(request, "shop/index.html", params)
 
