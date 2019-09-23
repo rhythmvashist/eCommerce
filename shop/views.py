@@ -7,18 +7,27 @@ from math import ceil
 # Create your views here.
 
 def index(request):
-    products = Product.objects.all()
-    print(products)
-    n = len(products)
-    nSlides = n // 4 + ceil((n / 4) - (n // 4))
+
+
     # params = {
     #     'product': products,
     #     'no_of_slides': nSlides,
     #     'range': range(1, nSlides)
     # }
+    # list of list
+    allprods = []
+    categoriesList = Product.objects.values('category', 'id')
+    print(categoriesList)
+    categoryLt = {item['category'] for item in categoriesList}
+    for category in categoryLt:
+        prods = Product.objects.filter(category=category)
+        print(prods)
+        n = len(prods)
+        nSlides = n//4 + ceil((n/4)-(n//4))
+        allprods.append([prods, range(1,nSlides), nSlides])
 
-    #list of list
-    allprods=[[products,range(1,nSlides),nSlides],[products,range(1,nSlides),nSlides]]
+
+
     params = {
         'allprods': allprods
     }
