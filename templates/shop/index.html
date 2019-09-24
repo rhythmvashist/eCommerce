@@ -12,8 +12,8 @@ let cart; {% extends 'shop/basic.html' %}
 
           .col-md-3 img{
 
-          max-width: 227px;
-          height: 242px;
+          width: 170px;
+          height: 200px;
           }
 
           body .carousel-indicator li{
@@ -119,5 +119,6 @@ let cart; {% extends 'shop/basic.html' %}
         localStorage.setItem('cart',JSON.stringify(cart));
 
     })
+    $('popcart').popover()
     </script>
 {% endblock %}
