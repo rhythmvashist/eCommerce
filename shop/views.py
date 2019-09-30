@@ -31,14 +31,13 @@ def about(request):
 
 def contact(request):
     if request.method == 'POST':
-
         name = request.POST.get('name', '')
         email = request.POST.get('email', '')
         desc = request.POST.get('desc', '')
         phone = request.POST.get('phone', '')
 
-        contact = Contact(name=name, email=email, phone=phone, desc=desc)
-        contact.save()
+        contact_user = Contact(name=name, email=email, phone=phone, desc=desc)
+        contact_user.save()
     return render(request, "shop/contact.html")
 
 
@@ -50,8 +49,9 @@ def search(request):
     return render(request, "shop/search.html")
 
 
-def productView(request,myid):
-    #fetch the producct from db
+def productView(request, myid):
+
+    #fetch the product from db
 
     product=Product.objects.filter(id=myid)
     print(product)
