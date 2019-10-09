@@ -5,7 +5,6 @@ from math import ceil
 
 # Create your views here.
 
-
 def index(request):
     allprods = []
     categoriesList = Product.objects.values('category', 'id')
