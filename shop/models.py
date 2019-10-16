@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 class Product(models.Model):
@@ -24,3 +25,19 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Order(models.Model):
+    order_id = models.CharField(max_length=100)
+    items_json = models.CharField(max_length=500)
+    name = models.CharField(max_length=120)
+    email = models.CharField(max_length=120)
+    address = models.CharField(max_length=120)
+    city = models.CharField(max_length=120)
+    state = models.CharField(max_length=120)
+    zip_code = models.CharField(max_length=120)
+
+    def __str__(self):
+        return self.name
+
+
