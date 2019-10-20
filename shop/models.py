@@ -29,7 +29,7 @@ class Contact(models.Model):
 
 class Order(models.Model):
     order_id = models.CharField(max_length=100)
-    items_json = models.CharField(max_length=500)
+    items_json = models.CharField(max_length=5000)
     name = models.CharField(max_length=120)
     email = models.CharField(max_length=120)
     address = models.CharField(max_length=120)
