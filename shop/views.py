@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Product, Contact, Order
+from .models import Product, Contact, OrderTable
 from math import ceil
 
 
@@ -59,26 +59,25 @@ def productView(request, myid):
 
 
 def checkout(request):
-
     print('checkout is called ')
     if request.method == 'POST':
-        #uses nam a tag to fetch value
-        items_j=request.POST.get('itemsJson','')
+        # uses nam a tag to fetch value
+        items_j = request.POST.get('itemsJson', '')
         name = request.POST.get('name', '')
         email = request.POST.get('email', '')
         phone = request.POST.get('phone', '')
-        address = request.POST.get('address1', '')+" "+request.POST.get('address2', '')
+        address = request.POST.get('address1', '') + " " + request.POST.get('address2', '')
         city = request.POST.get('city', '')
         state = request.POST.get('state', '')
         zip_code = request.POST.get('zip_code', '')
 
-        orders = Order(name=name, email=email, phone=phone, address=address, city=city, zip_code=zip_code, state=state,items_json=items_j)
+        orders = OrderTable(name=name, email=email, phone=phone, address=address, city=city, zip_code=zip_code,
+                            state=state, items_json=items_j)
         orders.save()
         val = True
+        id = orders.id
 
-        print("id is " + orders.order_id)
-
-        return render(request,'shop/checkout.html',{
+        return render(request, 'shop/checkout.html', {
             'val': val,
             'id': id
         })

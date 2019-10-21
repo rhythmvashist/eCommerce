@@ -27,9 +27,8 @@ class Contact(models.Model):
         return self.name
 
 
-class Order(models.Model):
-
-    orderID= models.AutoField(primary_key=True, default=0)
+class OrderTable(models.Model):
+    id=models.AutoField(primary_key=True)
     items_json = models.CharField(max_length=5000)
     name = models.CharField(max_length=120)
     email = models.CharField(max_length=120)
