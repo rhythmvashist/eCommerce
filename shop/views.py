@@ -75,7 +75,8 @@ def checkout(request):
         orders = Order(name=name, email=email, phone=phone, address=address, city=city, zip_code=zip_code, state=state,items_json=items_j)
         orders.save()
         val = True
-        id = orders.order_id
+
+        print("id is " + orders.order_id)
 
         return render(request,'shop/checkout.html',{
             'val': val,
